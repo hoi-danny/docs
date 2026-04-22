@@ -1,15 +1,11 @@
 name: Section-level diff summary
 
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, synchronize, reopened]
   push:
     branches: [main]
 
 permissions:
   contents: read
-  pull-requests: write
 
 concurrency:
   group: section-diff-${{ github.workflow }}-${{ github.ref }}
@@ -28,8 +24,8 @@ jobs:
         id: summary
         shell: bash
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          BASE_SHA: ${{ github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
           ONLY_GLOBS: "docs/**/*.md,docs/**/*.mdx,**/*.md,**/*.mdx"
           MAX_SECTIONS_PER_FILE: "60"
         run: |
@@ -39,41 +35,4 @@ jobs:
         shell: bash
         run: |
           cat section-diff.md >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Comment on PR
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const body = fs.readFileSync('section-diff.md', 'utf8');
-            const marker = '<!-- section-diff-summary -->';
-            const finalBody = `${marker}\n${body}`;
-
-            const { owner, repo } = context.repo;
-            const issue_number = context.payload.pull_request.number;
-
-            const comments = await github.paginate(github.rest.issues.listComments, {
-              owner,
-              repo,
-              issue_number,
-              per_page: 100,
-            });
-
-            const existing = comments.find(c => typeof c.body === 'string' && c.body.includes(marker));
-            if (existing) {
-              await github.rest.issues.updateComment({
-                owner,
-                repo,
-                comment_id: existing.id,
-                body: finalBody,
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner,
-                repo,
-                issue_number,
-                body: finalBody,
-              });
-            }
 
