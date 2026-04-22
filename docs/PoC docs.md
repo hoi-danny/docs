@@ -3,16 +3,14 @@ marp: true
 theme: default
 size: 16:9
 paginate: true
-<!--
-style: |
-  table {
-    font-size: 0.39em;
-    line-height: 1.2;
-  }
-  th, td {
-    padding: 3px 4px;
-  }
--->
+# style: |
+#   table {
+#     font-size: 0.39em;
+#     line-height: 1.2;
+#   }
+#   th, td {
+#     padding: 3px 4px;
+#   }
 ---
 
 # 카카오클라우드의 다양한 서비스
