@@ -6929,7 +6929,7 @@ VM 서비스에서 제공하는 이미지는 다음과 같습니다.
 
 제공되는 기본 이미지​
 
-| 구분 | 이미지 종류 | Linux | Ubuntu 20.04 | | Ubuntu 20.04 (GPU) | | Ubuntu 22.04 | | Ubuntu 22.04 (GPU) | | Ubuntu 24.04 | | CentOS Stream 9 | | Rocky Linux 8.10 | | Rocky Linux 9.4 | | Alma Linux 8.10 | | Alma Linux 9.4 | Windows | Windows Server 2019 | | Windows Server 2019 (+ MSSQL 2019) | | Windows Server 2022
+| 구분 | 이미지 종류 | Linux | Ubuntu 22.04 | | Ubuntu 22.04 (GPU) | | Ubuntu 24.04 | | Ubuntu 24.04 (GPU) | | Ubuntu 26.04 | | CentOS Stream 9 | | Rocky Linux 8.10 | | Rocky Linux 9.4 | | Alma Linux 8.10 | | Alma Linux 9.4 | Windows | Windows Server 2019 | | Windows Server 2019 (+ MSSQL 2019) | | Windows Server 2022
 
 볼륨​
 
