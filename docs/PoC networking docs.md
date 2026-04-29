@@ -2200,9 +2200,9 @@ Source: [https://docs.kakaocloud.com/service/networking/lb/main/lb-target-group]
 
 대상 그룹을 생성할 때 상태 확인 사용 여부를 선택할 수 있습니다. 상태 확인을 사용하지 않는 경우에는 대상의 운영 상태가 No Monitor로 표시됩니다. 상태 확인 설정을 사용 상태로 설정하면, 상태 확인 유형과 체크 주기, 타임아웃 시간, 상태 전환 기준(성공 및 실패)을 설정할 수 있습니다.
 
-예시(Health Check): 체크 주기 `10초`, 타임아웃 시간 `5초`, 상태 전환 기준(성공 `2회` / 실패 `2회`)으로 설정합니다.
+예시(Health Check): 체크 주기 `15초`, 타임아웃 시간 `7초`, 상태 전환 기준(성공 `3회` / 실패 `3회`)으로 설정합니다.
 
-유형으로 HTTP/HTTPS를 선택하는 경우에는 HTTP 메서드, 버전, 상태 코드, 체크 경로를 추가로 설정할 수 있습니다.
+유형으로 HTTP/HTTPS를 선택하는 경우에는 HTTP 메서드, 버전, 상태 코드, 체크 경로를 추가로 설정할 수 있습니다. 예를 들어 HTTP 메서드 `GET`, 버전 `HTTP/1.1`, 상태 코드 `200~299`, 체크 경로 `/healthz`로 설정할 수 있습니다.
 
 Direct Server Return Network Load Balancer(DSRNLB)는 상태 확인 설정을 위해 대상 인스턴스에 추가적인 설정이 필요합니다. 자세한 내용은 [How-to Guides](https://docs.kakaocloud.com/service/networking/lb/how-to-guides/dsrnlb)를 참조하세요.
 
